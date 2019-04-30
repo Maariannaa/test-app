@@ -1,0 +1,33 @@
+span {
+  color: lightgray;
+}
+
+ol {
+  font-size: 1.5em
+}
+
+.country {
+  justify-content: space-evenly;
+  border-radius: 15px;
+  box-shadow: 0px 5px 20px darkslateblue;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
+  align-items: center;
+  min-width: 10%;
+  padding: 10px;
+}
+
+.title {
+  background: dimgray;
+  width: 100%;
+  padding: 5px;
+  color: #fff;
+  border-radius: 15px;
+}
+
+.flag {
+  min-width: 200px;
+  max-width: 300px;
+}

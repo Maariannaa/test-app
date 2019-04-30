@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Countries from '../RestAPI/Countries';
 
 class Home extends Component {
   login() {
@@ -7,29 +8,28 @@ class Home extends Component {
   render() {
     const { isAuthenticated } = this.props.auth;
     return (
-      <div className="App">
+      <div className="App-header">
         <div className="container">
         {
           isAuthenticated() && (
             <div>
-              <h4>
+              <h3>
                 You are logged in!
-              </h4>
+              </h3>
+              <Countries />
             </div>
-            )
+          )
         }
         {
           !isAuthenticated() && (
-              <h4>
-                You are not logged in! Please{' '}
-                <a style={{ cursor: 'pointer' }}
-                  onClick={this.login.bind(this)}>
-                  Log In
-                </a>
-                {' '}to continue.
-              </h4>
-            )
-            
+            <h3>
+              You are not logged in! Please{' '}
+              <a onClick={this.login.bind(this)}>
+                Log In
+              </a>
+              {' '}to continue.
+            </h3>
+          )  
         }
         </div>
       </div>

@@ -1,5 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './App.css';
+import Button from '@material-ui/core/Button';
 
 class App extends Component {
   goTo(route) {
@@ -16,35 +17,41 @@ class App extends Component {
 
   componentDidMount() {
     const { renewSession } = this.props.auth;
+
     if (localStorage.getItem('isLoggedIn') === 'true') {
       renewSession();
     }
   }
+
   render() {
     const { isAuthenticated } = this.props.auth;
     return (
-      <div className="App">
-        <h1>TEST REACT APP</h1>
-        <button className="App-btn"
+      <div className="App-header">
+        <h1>PETTERSONAPPS TEST TASK</h1>
+        <div className="btn-margin">
+        <Button variant="outlined" 
                 onClick={this.goTo.bind(this, 'home')}>
           Home
-        </button>
+        </Button>
         {
           !isAuthenticated() && (
-              <button className="App-btn"
-                      onClick={this.login.bind(this)}>
-                Log In
-              </button>
-            )
+            <Button variant="outlined" 
+                    color="primary"
+                    onClick={this.login.bind(this)}>
+              Log In
+            </Button>
+          )
         }
         {
           isAuthenticated() && (
-              <button className="App-btn"
-                      onClick={this.logout.bind(this)}>
-                Log Out
-              </button>
-            )
+            <Button variant="outlined" 
+                    color="primary"
+                    onClick={this.logout.bind(this)}>
+              Log Out
+            </Button>
+          )
         }
+        </div>
       </div>
     );
   }
