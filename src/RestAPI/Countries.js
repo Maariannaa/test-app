@@ -7,14 +7,20 @@ import SearchIcon from '@material-ui/icons/Search';
 const Countries = () =>{
   const [countries, setCountries] = useState([]);
   const [search, setSearch] = useState('');
-  const [query, setQuery] = useState('united');
+  const [query, setQuery] = useState(' ');
 
   useEffect(() => {getCountries()}, [query])
 
   const getCountries = async  () => {
-    const response = await fetch( `https://restcountries.eu/rest/v2/name/${query}`)
-    const data = await response.json();
-    setCountries(data)
+    if (query == ' '){
+      const response = await fetch( `https://restcountries.eu/rest/v2/all`)
+      const data = await response.json();
+      setCountries(data)
+    }else{
+      const response = await fetch(`https://restcountries.eu/rest/v2/name/${query}`)
+      const data = await response.json();
+      setCountries(data)
+    }
   }
 
   const updateSearch = e => {
